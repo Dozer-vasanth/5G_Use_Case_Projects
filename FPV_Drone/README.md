@@ -3,6 +3,7 @@ For this project we build a custom FPV drone system that delivers an immersive r
 After you connect your drone to QGroundControl and setup MAVLink connection (for which the instructions are present in the pdf report) you can run hud_overlay.py to get important telemetries like battery percentage and flight mode which will then be saved in hud_data.txt (created by the code).
 
 The data inside hud_data.txt will then be overlayed on the drone's video feed with the help of ffmpeg. The command is ffmpeg -rtsp_transport tcp -i rtsp://drone_ip:10000/drone_cam -vf "drawtext=textfile=hud_data.txt:reload=1:fontcolor=white:fontsize=36:box=1:boxcolor=black@0.6:x=20:y=20" -c:v libx264 -preset ultrafast -tune zerolatency -f rtsp rtsp://localhost:8554/fpv_hud
+
 Mediamtx is used to create a local server which then retransmits the video feed with all the important telemetries overlayed on top.
 More information about installation and configuration of Mediamtx and FFmpeg can be found in the pdf report. 
 
