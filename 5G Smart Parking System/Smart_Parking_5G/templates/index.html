@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5G Smart Parking System</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <h1>5G Smart Parking Dashboard</h1>
+    
+    <div style="background: #222; padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: center; border: 2px solid #00ffcc;">
+        <h2 style="margin: 0 0 10px 0; color: white;">Current Mode: <span id="ui-mode-text" style="color: #00ffcc;">Static</span></h2>
+        <button id="btn-toggle-mode" style="background: #ffaa00; color: black; font-size: 18px;">🔄 Switch to LIVE Mode</button>
+    </div>
+    
+    <div class="controls">
+        <div id="static-controls" class="frame-nav">
+            <button id="btn-prev" class="btn-nav">&lt; Prev</button>
+            <span id="frame-indicator" class="nav-text">Baseline</span>
+            <button id="btn-next" class="btn-nav">Next &gt;</button>
+        </div>
+
+        <div id="live-controls" style="display: none;">
+            <button id="btn-capture-base" class="btn-exit" style="background: #ff4757; color: white;">📸 Capture Baseline</button>
+        </div>
+
+        <button id="btn-draw-roi" class="btn-set" style="background: #2ed573; color: black; margin-left: auto;">🖍️ Calibrate (Slots/Roads/Entry/Exit)</button>
+    </div>
+
+    <div class="video-container">
+        <img id="dashboard-feed" src="" alt="Live Parking Feed">
+    </div>
+    
+    <p id="summary">Loading slot summary...</p>
+    <div id="paths">Loading route details...</div>
+
+    <script>
+        // Pass the server state directly to JavaScript
+        const IS_LIVE_MODE = {{ is_live }};
+    </script>
+    <script src="/static/js/main.js?v=4"></script>
+</body>
+</html>
